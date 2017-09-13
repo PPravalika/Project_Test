@@ -21,9 +21,30 @@ import com.example.innovecture.main.core.impl.AnimalImpl;
  */
 public class AnimalTest {
 	
+	private IAnimal animal ;
+        private Animals eagle;
+	
+	/** 
+	 * @throws java.lang.Exception 
+ 	 */ 
+ 	@Before 
+ 	public void setUp() throws Exception { 
+		animal = new AnimalImpl();
+	        eagle = new Eagle();
+ 	} 
+ 
+ 
+ 	/** 
+ 	 * @throws java.lang.Exception 
+ 	 */ 
+ 	@After 
+ 	public void tearDown() throws Exception { 
+ 		 animal = null; 
+		eagle=null;
+ 	} 
+
 	@Test
 	public void testAnimalData() {
-		IAnimal animal = new AnimalImpl();
 		AnimalData a  = animal.getAnimalInformation("Cat");
 		//check the Eagle habitat
 		Assert.assertTrue(a.getAnimalName().equalsIgnoreCase("Cat"));
@@ -35,7 +56,7 @@ public class AnimalTest {
 		l1.add("cat");
 		l1.add("dog");
 		l1.add("Eagle");
-		IAnimal animal = new AnimalImpl();
+		animal = new AnimalImpl();
 		List<String> a  = animal.getAllPets(l1);
 		Assert.assertEquals(a.size(), 2);
 
@@ -43,7 +64,6 @@ public class AnimalTest {
 
 	@Test
 	public void testAnimals() {
-		Animals eagle = new Eagle();
 		String s = eagle.habitat();
 		eagle.food();
 		//check the Eagle habitat
