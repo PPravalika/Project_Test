@@ -1,4 +1,4 @@
-package com.example.innovecture;
+ackage com.example.innovecture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import com.example.innovecture.main.core.IAnimal;
 import com.example.innovecture.main.core.impl.AnimalImpl;
 
 /**
- * @author PPRAVALIKA
+* @author PPRAVALIKA
  * 
  * 
  */
@@ -23,7 +23,10 @@ public class AnimalTest {
 	
 	private IAnimal animal ;
         private Animals eagle;
-	
+	private Animals gilaMonster;
+	private Animals trout;
+
+                
 	/** 
 	 * @throws java.lang.Exception 
  	 */ 
@@ -31,7 +34,9 @@ public class AnimalTest {
  	public void setUp() throws Exception { 
 		animal = new AnimalImpl();
 	        eagle = new Eagle();
- 	} 
+	        gilaMonster = new GilaMonster();
+		trout = new Trout();
+	} 
  
  
  	/** 
@@ -41,6 +46,8 @@ public class AnimalTest {
  	public void tearDown() throws Exception { 
  		 animal = null; 
 		eagle=null;
+	       gilaMonster = null;
+		trout=null;
  	} 
 
 	@Test
@@ -73,8 +80,7 @@ public class AnimalTest {
 
 	@Test
 	public void testGilaMonster() {
-		Animals gilaMonster = new GilaMonster();
-		Assert.assertFalse(gilaMonster.isAPet());
+	        Assert.assertFalse(gilaMonster.isAPet());
 		String s = gilaMonster.food();
 		Assert.assertTrue(s.equalsIgnoreCase("GilaMonster is a carnivores"));
 
@@ -82,7 +88,6 @@ public class AnimalTest {
 
 	@Test
 	public void testTrout() {
-		Animals trout = new Trout();
 		String p = trout.food();
 		Assert.assertTrue(p.equalsIgnoreCase("Trout is a Omnivores"));
 	}
